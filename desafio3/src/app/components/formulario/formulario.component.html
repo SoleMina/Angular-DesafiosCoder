@@ -30,6 +30,7 @@
       class="form-control"
       placeholder="Lastname"
       formControlName="lastname"
+      #txtLastname
       [ngClass]="formContacto.get('lastname')?.errors?.['required']  || formContacto.get('lastname')?.errors?.['minlength']? 'is-invalid':'is-valid'"
       s
     />
@@ -53,6 +54,7 @@
       class="form-control"
       placeholder="Course"
       formControlName="course"
+      #txtCourse
       [ngClass]="formContacto.get('course')?.errors?.['required']  || formContacto.get('course')?.errors?.['minlength']? 'is-invalid':'is-valid'"
     />
     <p
@@ -75,6 +77,7 @@
       class="form-control"
       placeholder="Enter email"
       formControlName="email"
+      #txtEmail
       [ngClass]="formContacto.get('email')?.errors?.['required']  || formContacto.get('email')?.errors?.['email']? 'is-invalid':'is-valid'"
     />
     <small id="emailHelp" class="form-text text-muted"
@@ -95,3 +98,10 @@
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+<div>
+  <h4 class="pt-4">Valores</h4>
+  <p>Name: {{ txtName.value }}</p>
+  <p>Lastname: {{ txtLastname.value }}</p>
+  <p>Course: {{ txtCourse.value }}</p>
+  <p>Email: {{ txtEmail.value }}</p>
+</div>
