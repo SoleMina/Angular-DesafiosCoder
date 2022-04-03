@@ -1,0 +1,12 @@
+.toolbar {
+  padding: 10px;
+  width: 100%;
+  background-color: #000203 !important;
+  color: #ffffff;
+  position: fixed;
+  z-index: 9999;
+  display: block;
+}
+.toolbar button {
+  background-color: white;
+}

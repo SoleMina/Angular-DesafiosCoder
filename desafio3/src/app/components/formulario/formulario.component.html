@@ -1,1 +1,97 @@
-<p>formulario works!</p>
+<h2 class="pt-5 text-center">{{ title }}</h2>
+<form [formGroup]="formContacto" (ngSubmit)="enviarFormulario()">
+  <div class="form-group">
+    <label class="form-label mt-2">Name:</label>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter Name"
+      formControlName="name"
+      #txtName
+      [ngClass]="formContacto.get('name')?.errors?.['required']  || formContacto.get('name')?.errors?.['minlength']? 'is-invalid':'is-valid'"
+    />
+    <p
+      *ngIf="formContacto.get('name')?.errors?.['required']"
+      class="invalid-feedback"
+    >
+      Name input is required
+    </p>
+    <p
+      *ngIf="formContacto.get('name')?.errors?.['minlength']"
+      class="invalid-feedback"
+    >
+      Name must be longer than 3 characteres
+    </p>
+  </div>
+  <div class="form-group">
+    <label class="form-label mt-2">Lastname:</label>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Lastname"
+      formControlName="lastname"
+      [ngClass]="formContacto.get('lastname')?.errors?.['required']  || formContacto.get('lastname')?.errors?.['minlength']? 'is-invalid':'is-valid'"
+      s
+    />
+    <p
+      *ngIf="formContacto.get('lastname')?.errors?.['required']"
+      class="invalid-feedback"
+    >
+      Lastname input is required
+    </p>
+    <p
+      *ngIf="formContacto.get('lastname')?.errors?.['minlength']"
+      class="invalid-feedback"
+    >
+      Lastname must be longer than 3 characteres
+    </p>
+  </div>
+  <div class="form-group">
+    <label class="form-label mt-2">Course:</label>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Course"
+      formControlName="course"
+      [ngClass]="formContacto.get('course')?.errors?.['required']  || formContacto.get('course')?.errors?.['minlength']? 'is-invalid':'is-valid'"
+    />
+    <p
+      *ngIf="formContacto.get('course')?.errors?.['required']"
+      class="invalid-feedback"
+    >
+      Course input is required
+    </p>
+    <p
+      *ngIf="formContacto.get('course')?.errors?.['minlength']"
+      class="invalid-feedback"
+    >
+      Course must be longer than 3 characteres
+    </p>
+  </div>
+  <div class="form-group">
+    <label class="form-label mt-2">Email address</label>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter email"
+      formControlName="email"
+      [ngClass]="formContacto.get('email')?.errors?.['required']  || formContacto.get('email')?.errors?.['email']? 'is-invalid':'is-valid'"
+    />
+    <small id="emailHelp" class="form-text text-muted"
+      >We'll never share your email with anyone else.</small
+    >
+    <p
+      *ngIf="formContacto.get('email')?.errors?.['required']"
+      class="invalid-feedback"
+    >
+      Email input is required
+    </p>
+    <p
+      *ngIf="formContacto.get('email')?.errors?.['email']"
+      class="invalid-feedback"
+    >
+      It must contain '@' and '.com'
+    </p>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

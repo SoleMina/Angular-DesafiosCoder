@@ -1,0 +1,30 @@
+.navbar {
+  background-color: #3791ba;
+  flex-direction: column;
+  color: #ffffff;
+  height: 100%;
+  position: fixed;
+  z-index: 999;
+  margin-top: 4%;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding: 0;
+}
+.navbar > ul {
+  list-style-type: none;
+  padding-left: 0;
+  text-align: left;
+  padding-top: 30px;
+}
+.navbar > ul > li {
+  /*display: inline-block;*/
+  padding: 12px;
+  border-bottom: 1px solid black;
+}
+.navbar > ul > li:hover {
+  background-color: #214664;
+}
+.active {
+  background-color: #214664;
+}

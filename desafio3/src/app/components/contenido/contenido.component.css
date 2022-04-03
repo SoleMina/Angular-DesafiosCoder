@@ -1,0 +1,26 @@
+#content {
+  height: 100%;
+  margin: 0;
+  position: relative;
+  display: block;
+  margin-top: 50px;
+  background-color: #c8e8f5;
+}
+.container__content {
+  width: 80%;
+  margin: 0 auto;
+}
+.content__box {
+  overflow-x: scroll;
+}
+.bg-gray {
+  background-color: #b6b6b6;
+}
+.bg-graydark {
+  background-color: #8a8a8a;
+}
+@media only screen and (max-width: 764px) {
+  #content {
+    margin-left: 17%;
+  }
+}

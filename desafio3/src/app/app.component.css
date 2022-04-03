@@ -1,0 +1,17 @@
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "header header header header header header"
+    "menu contenido contenido contenido contenido contenido";
+}
+.grid-toolbar {
+  grid-area: header;
+}
+.grid-navbar {
+  grid-area: menu;
+  width: 100%;
+}
+.grid-contenido {
+  grid-area: contenido;
+  width: 100%;
+}

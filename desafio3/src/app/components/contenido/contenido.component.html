@@ -1,1 +1,44 @@
-<p>contenido works!</p>
+<div id="content">
+  <div class="container__content">
+    <app-formulario></app-formulario>
+    <h2 class="text-center p-5">{{ title }}</h2>
+    <div class="container content__box">
+      <table class="table">
+        <thead>
+          <tr class="bg-dark text-white">
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Lastname</th>
+            <th scope="col">Curso</th>
+            <th scope="col">Grade</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let alumno of alumnos"
+            [ngClass]="alumno.id % 2 == 0 ? 'bg-gray' : 'bg-graydark'"
+            (click)="userClicked(alumno.name)"
+          >
+            <td [ngStyle]="{ color: 'blue' }">{{ alumno.id }}</td>
+            <td
+              data-toggle="tooltip"
+              data-placement="top"
+              title="{{ alumno.name }}"
+            >
+              {{ alumno.name }}
+            </td>
+            <td>{{ alumno.lastname }}</td>
+            <td>{{ alumno.curso }}</td>
+            <td [ngClass]="alumno.grade > 14 ? 'text-success' : 'text-danger'">
+              {{ alumno.grade }}
+            </td>
+            <td>{{ alumno.email }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="pt-4">Contact us for more information.</p>
+    <p>Date: {{ fecha | date: "dd/MM/YYYY" }}</p>
+  </div>
+</div>
