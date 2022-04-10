@@ -96,7 +96,13 @@
       It must contain '@' and '.com'
     </p>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="formContacto.invalid"
+  >
+    Submit
+  </button>
 </form>
 <div>
   <h4 class="pt-4">Valores</h4>
