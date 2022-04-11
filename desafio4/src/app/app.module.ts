@@ -6,8 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppMaterialModule } from './modules/app.material.module';
 import { ContenidoComponent } from './components/contenido/contenido.component';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { ContenidoDialogComponent } from './components/contenido-dialog/contenido-dialog.component';
 import { DialogComponent } from './components/dialog/dialog.component';
@@ -19,8 +17,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     ContenidoComponent,
-    ToolbarComponent,
-    NavbarComponent,
     FormularioComponent,
     ContenidoDialogComponent,
     DialogComponent,

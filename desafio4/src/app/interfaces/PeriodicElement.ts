@@ -1,6 +1,9 @@
 export interface PeriodicElement {
-  name: string;
   position: number;
-  weight: number;
+  name: string;
+  age: number;
+  course: string;
+  grade: number;
+  email: string;
   symbol: string;
 }
