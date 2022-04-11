@@ -6,7 +6,7 @@ import {
   Input,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { PeriodicElement } from 'src/app/interfaces/PeriodicElement';
 import { AlumnoService } from 'src/app/services/alumno.service';
 
@@ -17,6 +17,7 @@ import { AlumnoService } from 'src/app/services/alumno.service';
 })
 export class TablaComponent implements OnInit {
   alumnos: any[] = [];
+  fecha: any = Date.now();
   displayedColumns: string[] = [
     'position',
     'name',
@@ -29,9 +30,12 @@ export class TablaComponent implements OnInit {
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatTable) tabla1!: MatTable<PeriodicElement>;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.alumnos = this.alumnoService.obtenerAlumnos();
+    this.tabla1?.renderRows();
   }
 
   ngOnInit(): void {
@@ -40,11 +44,15 @@ export class TablaComponent implements OnInit {
     });
   }
 
-  modificarCurso(alumno: any) {
-    this.alumnoService.modificarAlumno(alumno);
+  constructor(
+    private alumnoService: AlumnoService // Una instancia de CursoBetaService
+  ) {
+    this.alumnos = this.alumnoService.obtenerAlumnos();
+    this.tabla1?.renderRows();
   }
-
-  constructor(private alumnoService: AlumnoService) {}
+  userClicked(username: string) {
+    console.log('El usuario ' + username + ' fue clickeado');
+  }
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [

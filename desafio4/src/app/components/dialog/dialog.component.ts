@@ -14,7 +14,7 @@ export class DialogComponent implements OnInit {
 
   openDialog() {
     this.dialogoRef.open(ContenidoDialogComponent, {
-      width: '600px',
+      width: '650px',
       data: {
         name: 'Karina',
         lastname: 'Prado',

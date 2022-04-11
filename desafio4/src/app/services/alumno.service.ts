@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ViewChild } from '@angular/core';
+import { MatTable } from '@angular/material/table';
 import { Observable, Subject } from 'rxjs';
 import { PeriodicElement } from '../interfaces/PeriodicElement';
 
@@ -36,33 +37,6 @@ export class AlumnoService {
       email: 'sam@gmail.com',
       symbol: 'He',
     },
-    {
-      position: 4,
-      name: 'Estella',
-      age: 23,
-      course: 'Angular',
-      grade: 20,
-      email: 'ester@gmail.com',
-      symbol: 'He',
-    },
-    {
-      position: 5,
-      name: 'Carlos',
-      age: 19,
-      course: 'ReactJs',
-      grade: 20,
-      email: 'Carlos@gmail.com',
-      symbol: 'He',
-    },
-    {
-      position: 6,
-      name: 'Juan',
-      age: 28,
-      course: 'Angular',
-      grade: 20,
-      email: 'juan2022@gmail.com',
-      symbol: 'He',
-    },
   ];
 
   constructor() {
@@ -71,10 +45,21 @@ export class AlumnoService {
     );
     this.alumnoSubject = new Subject();
   }
+  @ViewChild(MatTable) tabla1!: MatTable<any>;
 
   obtenerObservable() {
     console.log(this.alumnoObservable);
     return this.alumnoObservable;
+  }
+  obtenerAlumnos() {
+    return this.alumnos;
+  }
+  addAlumno(alumno: any) {
+    this.alumnos.push(alumno);
+    this.alumnos = [...this.alumnos, alumno];
+    this.alumnoSubject.next(this.alumnos);
+    console.log('SERVICE', this.alumnos);
+    return this.alumnos;
   }
   modificarAlumno(alumno: any) {}
 }

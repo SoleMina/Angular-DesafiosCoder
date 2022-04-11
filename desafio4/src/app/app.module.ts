@@ -12,6 +12,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
 import { TablaComponent } from './components/tabla/tabla.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AlumnoService } from './services/alumno.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [AlumnoService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

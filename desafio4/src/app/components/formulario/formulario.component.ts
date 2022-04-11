@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AlumnoService } from 'src/app/services/alumno.service';
+import { MatTable } from '@angular/material/table';
 
 @Component({
   selector: 'app-formulario',
@@ -7,7 +9,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./formulario.component.css'],
 })
 export class FormularioComponent implements OnInit {
+  alumnos: any[] = [];
   formContacto: FormGroup = new FormGroup({
+    position: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^\d+$/),
+    ]),
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     age: new FormControl('', [
       Validators.required,
@@ -23,11 +30,19 @@ export class FormularioComponent implements OnInit {
   });
   title: string = 'Formulario';
 
-  constructor() {}
+  @ViewChild(MatTable) tabla1!: MatTable<any>;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.alumnoService.obtenerObservable().subscribe((alumnos) => {
+      this.alumnos = alumnos;
+    });
+  }
 
-  enviarFormulario() {
-    console.log(this.formContacto.value);
+  constructor(private alumnoService: AlumnoService) {}
+
+  addAlumno(alumno: any) {
+    this.alumnoService.addAlumno(this.formContacto.value);
+    this.tabla1?.renderRows();
+    console.log('thissss here', this.alumnos);
   }
 }
