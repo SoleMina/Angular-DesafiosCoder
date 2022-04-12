@@ -44,7 +44,6 @@ export class FormularioComponent implements OnInit {
     this.alumnoService.addAlumno(this.formContacto.value);
     this.alumnoService.obtenerAlumnos();
     this.tabla1?.renderRows();
-
     console.log('thissss here', this.alumnos);
   }
 }
