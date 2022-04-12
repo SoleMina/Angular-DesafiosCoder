@@ -52,7 +52,6 @@ export class AlumnoService {
   }
   addAlumno(alumno: any) {
     this.alumnos.push(alumno);
-    this.alumnos = [...this.alumnos, alumno];
     this.alumnoSubject.next(this.alumnos);
     console.log('SERVICE', this.alumnos);
     return this.alumnos;
