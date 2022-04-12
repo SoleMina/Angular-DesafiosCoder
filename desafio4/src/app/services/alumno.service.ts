@@ -71,4 +71,7 @@ export class AlumnoService {
     }
     this.alumnoSubject.next(this.alumnos);
   }
+  muestraAlumno(alumno: any) {
+    alert('El alumno es ' + alumno);
+  }
 }

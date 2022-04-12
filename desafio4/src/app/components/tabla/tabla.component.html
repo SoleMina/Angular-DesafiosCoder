@@ -48,11 +48,13 @@
                 (click)="eliminarAlumno(alumno.position)"
                 >delete</mat-icon
               >
-              <!-- 
-              <mat-icon aria-hidden="false" aria-label="Example home icon"
+
+              <mat-icon
+                aria-hidden="false"
+                aria-label="Example home icon"
+                (click)="muestraAlumno(alumno.name)"
                 >info</mat-icon
               >
-              -->
             </td>
           </tr>
         </tbody>
@@ -120,11 +122,12 @@
           (click)="eliminarAlumno(alumno.position)"
           >delete</mat-icon
         >
-        <!-- 
-              <mat-icon aria-hidden="false" aria-label="Example home icon"
-                >info</mat-icon
-              >
-              -->
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          (click)="muestraAlumno(alumno.name)"
+          >info</mat-icon
+        >
       </td>
     </ng-container>
 

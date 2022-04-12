@@ -59,6 +59,9 @@ export class TablaComponent implements OnInit {
     this.alumnoService.modificarAlumno(alumno);
     this.tabla1?.renderRows();
   }
+  muestraAlumno(alumno: any) {
+    this.alumnoService.muestraAlumno(alumno);
+  }
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
