@@ -14,6 +14,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlumnoService } from './services/alumno.service';
 import { ResaltadoDirective } from './directives/resaltado.directive';
+import { FontDirective } from './directives/font.directive';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ResaltadoDirective } from './directives/resaltado.directive';
     DialogComponent,
     TablaComponent,
     ResaltadoDirective,
+    FontDirective,
   ],
   imports: [
     BrowserModule,
