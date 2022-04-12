@@ -10,9 +10,7 @@ export class AppComponent {
   alumnos: any[] = [];
   title = 'desafio4';
 
-  constructor(
-    private alumnoService: AlumnoService // Una instancia de CursoBetaService
-  ) {
+  constructor(private alumnoService: AlumnoService) {
     this.alumnos = this.alumnoService.obtenerAlumnos();
   }
 }
