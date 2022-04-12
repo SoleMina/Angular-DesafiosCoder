@@ -8,7 +8,7 @@ import { PeriodicElement } from '../interfaces/PeriodicElement';
 })
 export class AlumnoService {
   private alumnoObservable: Observable<any>;
-  private alumnoSubject: Subject<any>;
+  alumnoSubject: Subject<any>;
   private alumnos: Array<PeriodicElement> = [
     {
       position: 1,
@@ -61,6 +61,7 @@ export class AlumnoService {
         this.alumnos.splice(i, 1);
       }
     }
+    this.alumnoSubject.next(this.alumnos);
     return this.alumnos;
   }
   modificarAlumno(alumno: any) {
@@ -70,6 +71,7 @@ export class AlumnoService {
       }
     }
     this.alumnoSubject.next(this.alumnos);
+    return this.alumnos;
   }
   muestraAlumno(alumno: any) {
     alert('El alumno es ' + alumno.name + ' y lleva el curso ' + alumno.course);
