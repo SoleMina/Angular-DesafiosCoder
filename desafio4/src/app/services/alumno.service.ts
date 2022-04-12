@@ -72,6 +72,6 @@ export class AlumnoService {
     this.alumnoSubject.next(this.alumnos);
   }
   muestraAlumno(alumno: any) {
-    alert('El alumno es ' + alumno);
+    alert('El alumno es ' + alumno.name + ' y lleva el curso ' + alumno.course);
   }
 }
