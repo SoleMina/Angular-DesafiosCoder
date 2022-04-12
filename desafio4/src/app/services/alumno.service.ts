@@ -58,5 +58,13 @@ export class AlumnoService {
     console.log('SERVICE', this.alumnos);
     return this.alumnos;
   }
+  eliminarAlumno(position: number) {
+    for (let i = 0; i < this.alumnos.length; i++) {
+      if (this.alumnos[i].position == position) {
+        this.alumnos.splice(i, 1);
+      }
+    }
+    return this.alumnos;
+  }
   modificarAlumno(alumno: any) {}
 }

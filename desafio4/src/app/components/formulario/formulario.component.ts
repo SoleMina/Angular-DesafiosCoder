@@ -26,7 +26,6 @@ export class FormularioComponent implements OnInit {
       Validators.pattern(/^\d+$/),
     ]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    symbol: new FormControl('', [Validators.required, Validators.minLength(2)]),
   });
   title: string = 'Formulario';
 

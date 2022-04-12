@@ -1,6 +1,6 @@
 <div id="content">
   <div class="container__content">
-    <h2 class="text-center p-5">Students</h2>
+    <h1 class="text-center p-2 font-weight-bold">Total Students</h1>
     <div class="container content__box">
       <table class="table">
         <thead>
@@ -38,7 +38,10 @@
               <mat-icon aria-hidden="false" aria-label="Example home icon"
                 >edit</mat-icon
               >
-              <mat-icon aria-hidden="false" aria-label="Example home icon"
+              <mat-icon
+                aria-hidden="false"
+                aria-label="Example home icon"
+                (click)="eliminarAlumno(alumno.position)"
                 >delete</mat-icon
               >
               <mat-icon aria-hidden="false" aria-label="Example home icon"

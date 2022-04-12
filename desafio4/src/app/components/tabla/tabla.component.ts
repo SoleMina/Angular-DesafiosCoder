@@ -53,6 +53,9 @@ export class TablaComponent implements OnInit {
   userClicked(username: string) {
     console.log('El usuario ' + username + ' fue clickeado');
   }
+  eliminarAlumno(position: number) {
+    this.alumnoService.eliminarAlumno(position);
+  }
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
