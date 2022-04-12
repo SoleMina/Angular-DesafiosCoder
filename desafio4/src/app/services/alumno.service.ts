@@ -23,15 +23,15 @@ export class AlumnoService {
       name: 'Soledad',
       age: 18,
       course: 'Angular',
-      grade: 20,
+      grade: 15,
       email: 'sol2022@gmail.com',
     },
     {
       position: 3,
       name: 'Sam',
-      age: 18,
+      age: 19,
       course: 'ReactJs',
-      grade: 20,
+      grade: 14,
       email: 'sam@gmail.com',
     },
   ];
