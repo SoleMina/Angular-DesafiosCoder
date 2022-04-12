@@ -8,9 +8,11 @@ export class FontDirective implements OnInit {
 
   constructor(private elemento: ElementRef) {
     this.elemento.nativeElement.style.fontSize = this.font;
+    this.elemento.nativeElement.style.fontWeight = 600;
   }
   ngOnInit(): void {
     console.log(this.font);
     this.elemento.nativeElement.style.fontSize = this.font;
+    this.elemento.nativeElement.style.fontWeight = 600;
   }
 }
