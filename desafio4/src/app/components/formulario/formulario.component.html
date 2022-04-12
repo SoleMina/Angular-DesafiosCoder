@@ -5,6 +5,7 @@
     (ngSubmit)="addAlumno(this.formContacto.value)"
   >
     <!-- Age Group-->
+
     <div class="form-group">
       <label class="form-label">Position:</label>
       <input
@@ -152,31 +153,6 @@
         class="invalid-feedback"
       >
         It must contain '@' and '.com'
-      </p>
-    </div>
-    <!-- Symbol Group-->
-    <div class="form-group">
-      <label class="form-label">Symbol:</label>
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Symbol"
-        formControlName="symbol"
-        #txtLastname
-        [ngClass]="formContacto.get('symbol')?.errors?.['required']  || formContacto.get('symbol')?.errors?.['minlength']? 'is-invalid':'is-valid'"
-        s
-      />
-      <p
-        *ngIf="formContacto.get('lastname')?.errors?.['required']"
-        class="invalid-feedback"
-      >
-        Lastname input is required
-      </p>
-      <p
-        *ngIf="formContacto.get('lastname')?.errors?.['minlength']"
-        class="invalid-feedback"
-      >
-        Lastname must be longer than 3 characteres
       </p>
     </div>
     <button

@@ -34,7 +34,17 @@
               {{ alumno.grade }}
             </td>
             <td>{{ alumno.email }}</td>
-            <td>{{ alumno.grade }}</td>
+            <td>
+              <mat-icon aria-hidden="false" aria-label="Example home icon"
+                >edit</mat-icon
+              >
+              <mat-icon aria-hidden="false" aria-label="Example home icon"
+                >delete</mat-icon
+              >
+              <mat-icon aria-hidden="false" aria-label="Example home icon"
+                >info</mat-icon
+              >
+            </td>
           </tr>
         </tbody>
       </table>
@@ -43,7 +53,6 @@
     <p>Date: {{ fecha | date: "dd/MM/YYYY" }}</p>
   </div>
 </div>
-
 
 <h2 class="text-center">Total Students</h2>
 <div class="mat-elevation-z8">
@@ -86,8 +95,18 @@
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef>Symbol</th>
-      <td mat-cell *matCellDef="let alumno">{{ alumno.symbol }}</td>
+      <th mat-header-cell *matHeaderCellDef>Options</th>
+      <td mat-cell *matCellDef="let alumno">
+        <mat-icon aria-hidden="false" aria-label="Example home icon"
+          >edit</mat-icon
+        >
+        <mat-icon aria-hidden="false" aria-label="Example home icon"
+          >delete</mat-icon
+        >
+        <mat-icon aria-hidden="false" aria-label="Example home icon"
+          >info</mat-icon
+        >
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -63,6 +63,5 @@ const ELEMENT_DATA: PeriodicElement[] = [
     course: 'Angular',
     grade: 20,
     email: 'karina@gmail.com',
-    symbol: 'He',
   },
 ];

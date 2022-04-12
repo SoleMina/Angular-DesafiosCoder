@@ -5,5 +5,4 @@ export interface PeriodicElement {
   course: string;
   grade: number;
   email: string;
-  symbol: string;
 }

@@ -17,7 +17,6 @@ export class AlumnoService {
       course: 'Angular',
       grade: 20,
       email: 'karina@gmail.com',
-      symbol: 'He',
     },
     {
       position: 2,
@@ -26,7 +25,6 @@ export class AlumnoService {
       course: 'Angular',
       grade: 20,
       email: 'sol2022@gmail.com',
-      symbol: 'He',
     },
     {
       position: 3,
@@ -35,7 +33,6 @@ export class AlumnoService {
       course: 'ReactJs',
       grade: 20,
       email: 'sam@gmail.com',
-      symbol: 'He',
     },
   ];
 
