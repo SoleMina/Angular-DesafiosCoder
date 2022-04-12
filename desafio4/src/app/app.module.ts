@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlumnoService } from './services/alumno.service';
 import { ResaltadoDirective } from './directives/resaltado.directive';
 import { FontDirective } from './directives/font.directive';
+import { FullnamePipe } from './pipes/fullname.pipe';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FontDirective } from './directives/font.directive';
     TablaComponent,
     ResaltadoDirective,
     FontDirective,
+    FullnamePipe,
   ],
   imports: [
     BrowserModule,

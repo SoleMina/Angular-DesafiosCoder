@@ -43,9 +43,7 @@ export class TablaComponent implements OnInit {
     });
   }
 
-  constructor(
-    private alumnoService: AlumnoService // Una instancia de CursoBetaService
-  ) {
+  constructor(private alumnoService: AlumnoService) {
     this.alumnos = this.alumnoService.obtenerAlumnos();
     this.tabla1?.renderRows();
   }

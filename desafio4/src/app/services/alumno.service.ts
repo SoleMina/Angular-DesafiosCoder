@@ -53,7 +53,6 @@ export class AlumnoService {
   addAlumno(alumno: any) {
     this.alumnos.push(alumno);
     this.alumnoSubject.next(this.alumnos);
-    console.log('SERVICE', this.alumnos);
     return this.alumnos;
   }
   eliminarAlumno(position: number) {
@@ -62,8 +61,6 @@ export class AlumnoService {
         this.alumnos.splice(i, 1);
       }
     }
-    console.log('HEYY', this.alumnos);
-
     return this.alumnos;
   }
   modificarAlumno(alumno: any) {
