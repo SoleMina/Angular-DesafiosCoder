@@ -35,7 +35,6 @@ export class TablaComponent implements OnInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.alumnos = this.alumnoService.obtenerAlumnos();
-    this.tabla1?.renderRows();
   }
 
   ngOnInit(): void {
@@ -55,6 +54,12 @@ export class TablaComponent implements OnInit {
   }
   eliminarAlumno(position: number) {
     this.alumnoService.eliminarAlumno(position);
+    this.tabla1?.renderRows();
+    console.log(this.alumnos);
+  }
+  modificarAlumno(alumno: any) {
+    this.alumnoService.modificarAlumno(alumno);
+    this.tabla1?.renderRows();
   }
 }
 

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlumnoService } from 'src/app/services/alumno.service';
 import { MatTable } from '@angular/material/table';
+import { PeriodicElement } from 'src/app/interfaces/PeriodicElement';
 
 @Component({
   selector: 'app-formulario',
@@ -29,7 +30,7 @@ export class FormularioComponent implements OnInit {
   });
   title: string = 'Formulario';
 
-  @ViewChild(MatTable) tabla1!: MatTable<any>;
+  @ViewChild(MatTable) tabla1!: MatTable<PeriodicElement>;
 
   ngOnInit(): void {
     this.alumnoService.obtenerObservable().subscribe((alumnos) => {
@@ -41,7 +42,9 @@ export class FormularioComponent implements OnInit {
 
   addAlumno(alumno: any) {
     this.alumnoService.addAlumno(this.formContacto.value);
+    this.alumnoService.obtenerAlumnos();
     this.tabla1?.renderRows();
+
     console.log('thissss here', this.alumnos);
   }
 }

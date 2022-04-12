@@ -45,7 +45,6 @@ export class AlumnoService {
   @ViewChild(MatTable) tabla1!: MatTable<any>;
 
   obtenerObservable() {
-    console.log(this.alumnoObservable);
     return this.alumnoObservable;
   }
   obtenerAlumnos() {
@@ -64,7 +63,16 @@ export class AlumnoService {
         this.alumnos.splice(i, 1);
       }
     }
+    console.log('HEYY', this.alumnos);
+
     return this.alumnos;
   }
-  modificarAlumno(alumno: any) {}
+  modificarAlumno(alumno: any) {
+    for (let i = 0; i < this.alumnos.length; i++) {
+      if (this.alumnos[i].position == alumno.position) {
+        this.alumnos[i].name = alumno.name + ' Modificado';
+      }
+    }
+    this.alumnoSubject.next(this.alumnos);
+  }
 }

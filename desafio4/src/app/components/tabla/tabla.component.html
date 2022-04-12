@@ -35,7 +35,10 @@
             </td>
             <td>{{ alumno.email }}</td>
             <td>
-              <mat-icon aria-hidden="false" aria-label="Example home icon"
+              <mat-icon
+                aria-hidden="false"
+                aria-label="Example home icon"
+                (click)="modificarAlumno(alumno)"
                 >edit</mat-icon
               >
               <mat-icon
