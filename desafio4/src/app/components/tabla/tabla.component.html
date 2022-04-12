@@ -47,9 +47,11 @@
                 (click)="eliminarAlumno(alumno.position)"
                 >delete</mat-icon
               >
+              <!-- 
               <mat-icon aria-hidden="false" aria-label="Example home icon"
                 >info</mat-icon
               >
+              -->
             </td>
           </tr>
         </tbody>
@@ -116,7 +118,7 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row of alumnos; columns: displayedColumns"></tr>
   </table>
 
   <mat-paginator

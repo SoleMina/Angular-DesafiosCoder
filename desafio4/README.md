@@ -8,4 +8,4 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 ## Project
 
-This project is built with angular material, flex-layout, tables, content-dialog, dialog, pipes, etc
+This project is built with angular material, flex-layout, tables, content-dialog, dialog, pipes, directives, services, etc

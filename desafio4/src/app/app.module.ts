@@ -13,6 +13,7 @@ import { TablaComponent } from './components/tabla/tabla.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlumnoService } from './services/alumno.service';
+import { ResaltadoDirective } from './directives/resaltado.directive';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AlumnoService } from './services/alumno.service';
     ContenidoDialogComponent,
     DialogComponent,
     TablaComponent,
+    ResaltadoDirective,
   ],
   imports: [
     BrowserModule,
