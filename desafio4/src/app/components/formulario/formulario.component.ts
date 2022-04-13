@@ -1,8 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlumnoService } from 'src/app/services/alumno.service';
-import { MatTable } from '@angular/material/table';
-import { PeriodicElement } from 'src/app/interfaces/PeriodicElement';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -31,7 +29,6 @@ export class FormularioComponent implements OnInit, OnDestroy {
   });
   title: string = 'Formulario';
 
-  @ViewChild(MatTable) tabla1!: MatTable<PeriodicElement>;
   private alumnoSubscription!: Subscription;
 
   ngOnInit(): void {
@@ -48,17 +45,22 @@ export class FormularioComponent implements OnInit, OnDestroy {
       });
   }
 
+  ngAfterViewInit() {
+    this.alumnos = this.alumnoService.obtenerAlumnos();
+  }
+
   ngOnDestroy(): void {
     this.alumnoSubscription.unsubscribe();
   }
 
-  constructor(private alumnoService: AlumnoService) {}
+  constructor(private alumnoService: AlumnoService) {
+    this.alumnos = this.alumnoService.obtenerAlumnos();
+  }
 
   addAlumno(alumno: any) {
     this.alumnoService.addAlumno(this.formContacto.value);
     this.alumnoService.obtenerAlumnos();
     this.alumnoService.obtenerObservable();
-    this.tabla1?.renderRows();
     console.log('thissss here', this.alumnos);
   }
 }
