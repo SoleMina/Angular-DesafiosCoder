@@ -157,12 +157,24 @@
         It must contain '@' and '.com'
       </p>
     </div>
-    <button
-      type="submit"
-      class="btn btn-primary"
-      [disabled]="formContacto.invalid"
-    >
-      Submit
-    </button>
+    <div class="btn__formulario">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="formContacto.invalid"
+        aria-label="close dialog"
+        mat-dialog-close
+      >
+        Submit
+      </button>
+      <button
+        mat-raised-button
+        aria-label="close dialog"
+        mat-dialog-close
+        class="btn btn-secondary"
+      >
+        Cancelar
+      </button>
+    </div>
   </form>
 </div>

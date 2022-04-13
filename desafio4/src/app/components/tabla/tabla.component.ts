@@ -8,6 +8,7 @@ import {
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { PeriodicElement } from 'src/app/interfaces/PeriodicElement';
+import { Alumno } from 'src/app/models/alumno';
 import { AlumnoService } from 'src/app/services/alumno.service';
 
 @Component({
@@ -16,7 +17,8 @@ import { AlumnoService } from 'src/app/services/alumno.service';
   styleUrls: ['./tabla.component.css'],
 })
 export class TablaComponent implements OnInit {
-  alumnos: any[] = [];
+  alumnos: Alumno[] = [];
+  //alumnos: any[] = [];
   fecha: any = Date.now();
   displayedColumns: string[] = [
     'position',

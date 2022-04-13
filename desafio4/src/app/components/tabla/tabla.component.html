@@ -17,7 +17,7 @@
         <tbody>
           <tr
             *ngFor="let alumno of alumnos"
-            [ngClass]="alumno.id % 2 == 0 ? 'bg-gray' : 'bg-graydark'"
+            [ngClass]="alumno.position % 2 == 0 ? 'bg-gray' : 'bg-graydark'"
             (click)="userClicked(alumno.name)"
           >
             <td [ngStyle]="{ color: 'blue' }">{{ alumno.position }}</td>
