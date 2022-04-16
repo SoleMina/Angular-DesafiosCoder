@@ -1,18 +1,19 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlumnoService } from 'src/app/services/alumno.service';
 import { Subscription } from 'rxjs';
 import { Alumno } from 'src/app/models/alumno';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 
 @Component({
-  selector: 'app-formulario',
-  templateUrl: './formulario.component.html',
-  styleUrls: ['./formulario.component.css'],
+  selector: 'app-edit-tabla',
+  templateUrl: './edit-tabla.component.html',
+  styleUrls: ['./edit-tabla.component.css'],
 })
-export class FormularioComponent implements OnInit, OnDestroy {
+export class EditTablaComponent implements OnInit, OnDestroy {
   alumnos: any[] = [];
-  formContacto: FormGroup = new FormGroup({
+  formModificar: FormGroup = new FormGroup({
     position: new FormControl('', [
       Validators.required,
       Validators.pattern(/^\d+$/),
@@ -29,11 +30,28 @@ export class FormularioComponent implements OnInit, OnDestroy {
     ]),
     email: new FormControl('', [Validators.required, Validators.email]),
   });
-  title: string = 'Formulario';
+  title: string = 'Update Form';
 
   private alumnoSubscription!: Subscription;
 
   @ViewChild(MatTable) tabla1!: MatTable<Alumno>;
+
+  constructor(
+    private alumnoService: AlumnoService,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.alumnos = this.alumnoService.obtenerAlumnos();
+    this.alumnoService.alumnoSubject.next(this.alumnos);
+
+    this.formModificar.setValue({
+      position: this.data.position,
+      name: this.data.name,
+      age: this.data.age,
+      course: this.data.course,
+      grade: this.data.grade,
+      email: this.data.email,
+    });
+  }
 
   ngOnInit(): void {
     this.alumnoService.obtenerObservable().subscribe((alumnos) => {
@@ -57,14 +75,9 @@ export class FormularioComponent implements OnInit, OnDestroy {
     this.alumnoSubscription.unsubscribe();
   }
 
-  constructor(private alumnoService: AlumnoService) {
-    this.alumnos = this.alumnoService.obtenerAlumnos();
-    this.alumnoService.alumnoSubject.next(this.alumnos);
-  }
-
-  addAlumno(alumno: any) {
-    this.alumnoService.addAlumno(this.formContacto.value);
-    this.tabla1?.renderRows();
-    console.log('thissss here', this.alumnos);
+  updateAlumno() {
+    let alumno = this.formModificar.value;
+    this.alumnoService.updateAlumno(alumno);
+    return this.alumnos;
   }
 }

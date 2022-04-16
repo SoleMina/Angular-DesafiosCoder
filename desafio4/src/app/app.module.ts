@@ -16,6 +16,7 @@ import { AlumnoService } from './services/alumno.service';
 import { ResaltadoDirective } from './directives/resaltado.directive';
 import { FontDirective } from './directives/font.directive';
 import { FullnamePipe } from './pipes/fullname.pipe';
+import { EditTablaComponent } from './components/edit-tabla/edit-tabla.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FullnamePipe } from './pipes/fullname.pipe';
     ResaltadoDirective,
     FontDirective,
     FullnamePipe,
+    EditTablaComponent,
   ],
   imports: [
     BrowserModule,

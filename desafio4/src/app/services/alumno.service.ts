@@ -2,11 +2,13 @@ import { Injectable, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { Observable, Subject } from 'rxjs';
 import { PeriodicElement } from '../interfaces/PeriodicElement';
+import { Alumno } from '../models/alumno';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AlumnoService {
+  alumnoSelected: any;
   private alumnoObservable: Observable<any>;
   alumnoSubject: Subject<any>;
   private alumnos: Array<PeriodicElement> = [
@@ -74,6 +76,16 @@ export class AlumnoService {
     return this.alumnos;
   }
   muestraAlumno(alumno: any) {
+    this.alumnoSubject.next(this.alumnos);
     alert('El alumno es ' + alumno.name + ' y lleva el curso ' + alumno.course);
+  }
+  updateAlumno(alumno: Alumno) {
+    for (let i = 0; i < this.alumnos.length; i++) {
+      if (this.alumnos[i].position == alumno.position) {
+        this.alumnos[i] = alumno;
+      }
+    }
+    this.alumnoSubject.next(this.alumnos);
+    return this.alumnos;
   }
 }
