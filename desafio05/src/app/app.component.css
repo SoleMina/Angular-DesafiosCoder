@@ -1,0 +1,13 @@
+.example-card {
+  max-width: 650px;
+  margin-bottom: 8px;
+  position: relative;
+  margin: 0 auto;
+}
+h1 {
+  text-align: center;
+  font-weight: bold;
+}
+.container {
+  margin-bottom: 10px;
+}

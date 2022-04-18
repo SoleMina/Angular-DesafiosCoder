@@ -1,0 +1,26 @@
+<h1>Productos</h1>
+<div *ngFor="let producto of productos$ | async" class="container">
+  <mat-card class="example-card">
+    <mat-card-title-group>
+      <mat-card-title>{{ producto.title }}</mat-card-title>
+      <mat-card-subtitle>{{ producto.category }}</mat-card-subtitle>
+      <mat-card-subtitle>Price: {{ producto.price }}</mat-card-subtitle>
+      <img mat-card-sm-image src="{{ producto.image }}" />
+    </mat-card-title-group>
+    <mat-card-content>
+      {{ producto.description }}
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="abrirCursoDialog(producto)"
+      >
+        Modificar
+      </button>
+      <button mat-flat-button color="warn" (click)="eliminarCurso(producto.id)">
+        Eliminar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
