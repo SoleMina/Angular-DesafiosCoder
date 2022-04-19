@@ -1,4 +1,4 @@
-<h1>Productos</h1>
+<h1>Productos con Observable</h1>
 <div *ngFor="let producto of productosFiltrados$ | async" class="container">
   <mat-card class="example-card">
     <mat-card-title-group>
@@ -10,15 +10,27 @@
     <mat-card-content>
       {{ producto.description }}
     </mat-card-content>
+    <mat-card-actions align="end"> </mat-card-actions>
+  </mat-card>
+</div>
+<mat-divider></mat-divider>
+
+<h1>Productos con Promise</h1>
+<div *ngFor="let producto of productos" class="container">
+  <mat-card class="example-card">
+    <mat-card-title-group>
+      <mat-card-title>{{ producto.name }}</mat-card-title>
+      <mat-card-subtitle>Price: {{ producto.price }}</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-content>
+      {{ producto.description }}
+    </mat-card-content>
     <mat-card-actions align="end">
       <button
         mat-flat-button
-        color="primary"
-        (click)="abrirCursoDialog(producto)"
+        color="warn"
+        (click)="eliminarProducto(producto.id)"
       >
-        Modificar
-      </button>
-      <button mat-flat-button color="warn" (click)="eliminarCurso(producto.id)">
         Eliminar
       </button>
     </mat-card-actions>

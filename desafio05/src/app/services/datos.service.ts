@@ -10,23 +10,41 @@ export class DatosService {
   datos$!: Observable<Producto[]>;
   productosPromise!: Promise<any>;
 
-  cursos: Array<any> = [
-    { id: 1, nombre: 'Angular', camada: 202201 },
-    { id: 2, nombre: 'Reactjs', camada: 202202 },
-    { id: 3, nombre: 'Vue', camada: 202203 },
+  productos: any[] = [
+    {
+      id: 1,
+      name: 'Laptop',
+      price: 4500,
+      description: 'This product has a high quality',
+    },
+    {
+      id: 2,
+      name: 'Ipad',
+      price: 3200,
+      description: 'This product has a high quality',
+    },
+    {
+      id: 3,
+      name: 'Iphone',
+      price: 3800,
+      description: 'This product has a high quality',
+    },
   ];
 
   constructor(private http: HttpClient) {
     //Promise
     this.productosPromise = new Promise((resolve, reject) => {
-      if (this.cursos.length > 0) {
-        resolve(this.productosPromise);
+      if (this.productos.length > 0) {
+        resolve(this.productos);
       } else {
-        reject(this.cursos);
+        reject(this.productos);
       }
     });
   }
 
+  obtenerCursosPromise() {
+    return this.productosPromise;
+  }
   obtenerDatosObservable(): Observable<Producto[]> {
     this.datos$ = this.http.get<Producto[]>(
       'https://fakestoreapi.com/products'
@@ -40,5 +58,16 @@ export class DatosService {
         datos.filter((producto: any) => producto.category == 'jewelery')
       )
     );
+  }
+
+  //Eliminar producto from promises
+  eliminarProductos(id: number) {
+    for (let i = 0; i < this.productos.length; i++) {
+      if (this.productos[0].id == id) {
+        this.productos.splice(i, 1);
+      }
+    }
+    console.log('Eliminar', this.productos);
+    return this.productos;
   }
 }
