@@ -43,18 +43,22 @@ export class AlumnoService {
       suscripcion.next(this.alumnos)
     );
     this.alumnoSubject = new Subject();
+    this.alumnoSubject.next(this.alumnos);
   }
-  @ViewChild(MatTable) tabla1!: MatTable<any>;
 
   obtenerObservable() {
     return this.alumnoObservable;
   }
+
+  obtenerObservableDos(): Observable<Alumno[]> {
+    return this.alumnoObservable;
+  }
+
   obtenerAlumnos() {
     return this.alumnos;
   }
   addAlumno(alumno: any) {
     this.alumnos.push(alumno);
-    this.alumnoSubject.next(this.alumnos);
     return this.alumnos;
   }
   eliminarAlumno(position: number) {

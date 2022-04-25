@@ -65,6 +65,7 @@ export class EditTablaComponent implements OnInit, OnDestroy {
       .subscribe((alumnos) => {
         this.alumnos = this.alumnoService.obtenerAlumnos();
       });
+    this.updateAlumno();
   }
 
   ngAfterViewInit() {
