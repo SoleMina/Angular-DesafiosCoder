@@ -15,8 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlumnoService } from './services/alumno.service';
 import { ResaltadoDirective } from './directives/resaltado.directive';
 import { FontDirective } from './directives/font.directive';
-import { FullnamePipe } from './pipes/fullname.pipe';
 import { EditTablaComponent } from './components/edit-tabla/edit-tabla.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -28,10 +28,10 @@ import { EditTablaComponent } from './components/edit-tabla/edit-tabla.component
     TablaComponent,
     ResaltadoDirective,
     FontDirective,
-    FullnamePipe,
     EditTablaComponent,
   ],
   imports: [
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
