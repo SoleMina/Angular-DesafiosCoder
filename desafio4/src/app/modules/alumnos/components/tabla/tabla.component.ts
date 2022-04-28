@@ -14,6 +14,7 @@ import { AlumnoService } from 'src/app/core/services/alumno.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EditTablaComponent } from '../edit-tabla/edit-tabla.component';
 import { Subscription } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-tabla',
@@ -83,8 +84,18 @@ export class TablaComponent implements OnInit, OnDestroy {
     console.log('El usuario ' + username + ' fue clickeado');
   }
   eliminarAlumno(position: number) {
-    this.alumnoService.eliminarAlumno(position);
-    this.tabla1?.renderRows();
+    Swal.fire({
+      title: '¿Estás seguro de que quieres eliminar este alumno?',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.alumnoService.eliminarAlumno(position);
+        this.tabla1?.renderRows();
+        Swal.fire('Eliminado!', '', 'success');
+      }
+    });
   }
   modificarAlumno(alumno: any) {
     this.alumnoService.modificarAlumno(alumno);

@@ -3,6 +3,32 @@
     {{ title }}
   </h1>
   <form [formGroup]="formModificar" (ngSubmit)="updateAlumno()">
+    <!-- Age Group-->
+
+    <div class="form-group">
+      <label class="form-label">Position:</label>
+      <input
+        readonly
+        type="number"
+        class="form-control"
+        placeholder="Enter Position"
+        formControlName="position"
+        #txtName
+        [ngClass]="formModificar.get('position')?.errors?.['required'] || formModificar.get('position')?.errors?.['pattern']? 'is-invalid':'is-valid'"
+      />
+      <p
+        *ngIf="formModificar.get('position')?.errors?.['required']"
+        class="invalid-feedback"
+      >
+        Position input is required
+      </p>
+      <p
+        *ngIf="formModificar.get('position')?.errors?.['pattern']"
+        class="invalid-feedback"
+      >
+        Position must be numbers
+      </p>
+    </div>
     <!-- Name Group-->
     <div class="form-group">
       <label class="form-label">Name:</label>

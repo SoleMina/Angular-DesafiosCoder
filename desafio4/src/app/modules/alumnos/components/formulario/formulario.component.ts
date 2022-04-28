@@ -4,6 +4,7 @@ import { AlumnoService } from 'src/app/core/services/alumno.service';
 import { Subscription } from 'rxjs';
 import { Alumno } from 'src/app/models/alumno';
 import { MatTable } from '@angular/material/table';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-formulario',
@@ -62,5 +63,12 @@ export class FormularioComponent implements OnInit, OnDestroy {
     this.alumnoService.addAlumno(this.formContacto.value);
     this.tabla1?.renderRows();
     console.log('thissss here', this.alumnos);
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Alumno registrado',
+      showConfirmButton: false,
+      timer: 1500,
+    });
   }
 }
