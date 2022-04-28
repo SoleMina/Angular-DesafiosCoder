@@ -10,7 +10,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { PeriodicElement } from 'src/app/interfaces/PeriodicElement';
 import { Alumno } from 'src/app/models/alumno';
-import { AlumnoService } from 'src/app/services/alumno.service';
+import { AlumnoService } from 'src/app/core/services/alumno.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EditTablaComponent } from '../edit-tabla/edit-tabla.component';
 import { Subscription } from 'rxjs';

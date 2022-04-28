@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AlumnoService } from 'src/app/services/alumno.service';
+import { AlumnoService } from 'src/app/core/services/alumno.service';
 import { Subscription } from 'rxjs';
 import { Alumno } from 'src/app/models/alumno';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';

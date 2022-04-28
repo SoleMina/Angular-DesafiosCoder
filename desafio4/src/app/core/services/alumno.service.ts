@@ -1,8 +1,8 @@
 import { Injectable, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { Observable, Subject } from 'rxjs';
-import { PeriodicElement } from '../interfaces/PeriodicElement';
-import { Alumno } from '../models/alumno';
+import { PeriodicElement } from '../../interfaces/PeriodicElement';
+import { Alumno } from '../../models/alumno';
 
 @Injectable({
   providedIn: 'root',
