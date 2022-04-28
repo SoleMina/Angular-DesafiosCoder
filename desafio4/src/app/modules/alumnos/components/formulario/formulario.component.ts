@@ -13,10 +13,6 @@ import { MatTable } from '@angular/material/table';
 export class FormularioComponent implements OnInit, OnDestroy {
   alumnos: any[] = [];
   formContacto: FormGroup = new FormGroup({
-    position: new FormControl('', [
-      Validators.required,
-      Validators.pattern(/^\d+$/),
-    ]),
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     age: new FormControl('', [
       Validators.required,

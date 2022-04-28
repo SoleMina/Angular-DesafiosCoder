@@ -6,31 +6,6 @@
     [formGroup]="formContacto"
     (ngSubmit)="addAlumno(this.formContacto.value)"
   >
-    <!-- Age Group-->
-
-    <div class="form-group">
-      <label class="form-label">Position:</label>
-      <input
-        type="number"
-        class="form-control"
-        placeholder="Enter Position"
-        formControlName="position"
-        #txtName
-        [ngClass]="formContacto.get('position')?.errors?.['required'] || formContacto.get('position')?.errors?.['pattern']? 'is-invalid':'is-valid'"
-      />
-      <p
-        *ngIf="formContacto.get('position')?.errors?.['required']"
-        class="invalid-feedback"
-      >
-        Position input is required
-      </p>
-      <p
-        *ngIf="formContacto.get('position')?.errors?.['pattern']"
-        class="invalid-feedback"
-      >
-        Position must be numbers
-      </p>
-    </div>
     <!-- Name Group-->
     <div class="form-group">
       <label class="form-label">Name:</label>

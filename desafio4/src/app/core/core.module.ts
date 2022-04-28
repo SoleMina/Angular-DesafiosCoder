@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CursosModule } from '../modules/cursos/cursos.module';
 import { AppRoutingModule } from '../app-routing.module';
-import { ContenidoComponent } from './alumnos/components/contenido/contenido.component';
+import { ContenidoComponent } from '../modules/alumnos/components/contenido/contenido.component';
 
 @NgModule({
   declarations: [ContenidoComponent],

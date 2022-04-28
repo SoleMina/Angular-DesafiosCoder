@@ -58,7 +58,16 @@ export class AlumnoService {
     return this.alumnos;
   }
   addAlumno(alumno: any) {
-    this.alumnos.push(alumno);
+    let number = this.alumnos.length;
+    let result = {
+      position: number + 1,
+      name: alumno.name,
+      age: alumno.age,
+      course: alumno.course,
+      grade: alumno.grade,
+      email: alumno.email,
+    };
+    this.alumnos.push(result);
     return this.alumnos;
   }
   eliminarAlumno(position: number) {

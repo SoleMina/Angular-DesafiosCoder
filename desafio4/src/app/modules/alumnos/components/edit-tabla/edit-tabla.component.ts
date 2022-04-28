@@ -14,10 +14,6 @@ import { MatTable } from '@angular/material/table';
 export class EditTablaComponent implements OnInit, OnDestroy {
   alumnos: any[] = [];
   formModificar: FormGroup = new FormGroup({
-    position: new FormControl('', [
-      Validators.required,
-      Validators.pattern(/^\d+$/),
-    ]),
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     age: new FormControl('', [
       Validators.required,
@@ -44,7 +40,6 @@ export class EditTablaComponent implements OnInit, OnDestroy {
     this.alumnoService.alumnoSubject.next(this.alumnos);
 
     this.formModificar.setValue({
-      position: this.data.position,
       name: this.data.name,
       age: this.data.age,
       course: this.data.course,
