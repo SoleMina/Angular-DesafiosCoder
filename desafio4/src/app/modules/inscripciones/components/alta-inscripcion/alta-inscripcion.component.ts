@@ -1,12 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-alta-curso',
-  templateUrl: './alta-curso.component.html',
-  styleUrls: ['./alta-curso.component.css'],
+  selector: 'app-alta-inscripcion',
+  templateUrl: './alta-inscripcion.component.html',
+  styleUrls: ['./alta-inscripcion.component.css'],
 })
-export class AltaCursoComponent implements OnInit {
+export class AltaInscripcionComponent implements OnInit {
   alumnos: any[] = [];
   formCurso: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -28,6 +28,5 @@ export class AltaCursoComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-
-  addAlumno(curso: any) {}
+  addAlumno(alumno: any) {}
 }

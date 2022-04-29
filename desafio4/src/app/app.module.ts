@@ -18,6 +18,7 @@ import { EditTablaComponent } from './modules/alumnos/components/edit-tabla/edit
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { CursosModule } from './modules/cursos/cursos.module';
+import { InscripcionesModule } from './modules/inscripciones/inscripciones.module';
 
 @NgModule({
   declarations: [
@@ -33,12 +34,14 @@ import { CursosModule } from './modules/cursos/cursos.module';
   ],
   imports: [
     SharedModule,
+    AppMaterialModule,
     AppRoutingModule,
     CursosModule,
+    InscripcionesModule,
     BrowserModule,
     CoreModule,
     BrowserAnimationsModule,
-    AppMaterialModule,
+
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,

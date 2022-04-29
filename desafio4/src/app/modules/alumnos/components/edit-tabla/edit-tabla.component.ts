@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { Alumno } from 'src/app/models/alumno';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-tabla',
@@ -79,6 +80,7 @@ export class EditTablaComponent implements OnInit, OnDestroy {
   updateAlumno() {
     let alumno = this.formModificar.value;
     this.alumnoService.updateAlumno(alumno);
+
     return this.alumnos;
   }
 }
