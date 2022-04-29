@@ -5,7 +5,6 @@ import { Subscription } from 'rxjs';
 import { Alumno } from 'src/app/models/alumno';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-tabla',

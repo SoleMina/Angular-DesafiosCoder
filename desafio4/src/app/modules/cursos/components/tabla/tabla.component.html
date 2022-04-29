@@ -1,0 +1,79 @@
+<div class="container pt-2 container__box">
+  <h2>Registrar Nuevo Curso</h2>
+  <button
+    class="btn__tabla"
+    mat-raised-button
+    color="accent"
+    (click)="openDialog()"
+  >
+    Agregar Curso
+  </button>
+</div>
+
+<div id="content">
+  <div class="container__content">
+    <h1 class="text-center p-2">Total Students</h1>
+    <div class="container content__box">
+      <table class="table">
+        <thead>
+          <tr class="bg-dark text-white">
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Curso</th>
+            <th scope="col">Grade</th>
+            <th scope="col">Email</th>
+            <th scope="col">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let alumno of alumnos"
+            [ngClass]="alumno.position % 2 == 0 ? 'bg-gray' : 'bg-graydark'"
+            (click)="userClicked(alumno.name)"
+          >
+            <td [ngStyle]="{ color: 'blue' }">{{ alumno.position }}</td>
+            <td
+              data-toggle="tooltip"
+              data-placement="top"
+              title="{{ alumno.name }}"
+            >
+              {{ alumno.name }}
+              <!--{{ alumno.position | fullname }}-->
+            </td>
+            <td>{{ alumno.age }}</td>
+            <td>{{ alumno.course }}</td>
+            <td [ngClass]="alumno.grade > 14 ? 'text-success' : 'text-danger'">
+              {{ alumno.grade }}
+            </td>
+            <td>{{ alumno.email }}</td>
+            <td>
+              <mat-icon
+                aria-hidden="false"
+                aria-label="Example home icon"
+                (click)="seleccionarAlumno(alumno)"
+                (click)="openDialog()"
+                >edit</mat-icon
+              >
+              <mat-icon
+                aria-hidden="false"
+                aria-label="Example home icon"
+                (click)="eliminarAlumno(alumno.position)"
+                >delete</mat-icon
+              >
+
+              <mat-icon
+                aria-hidden="false"
+                aria-label="Example home icon"
+                (click)="muestraAlumno(alumno)"
+                >info</mat-icon
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="pt-4">Contact us for more information.</p>
+    <p>Date: {{ fecha | date: "dd/MM/YYYY" }}</p>
+  </div>
+</div>

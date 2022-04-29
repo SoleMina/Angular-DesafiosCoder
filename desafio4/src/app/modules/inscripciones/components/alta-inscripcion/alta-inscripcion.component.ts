@@ -23,7 +23,7 @@ export class AltaInscripcionComponent implements OnInit {
       Validators.pattern(/^\d+$/),
     ]),
   });
-  title: string = 'Formulario';
+  title: string = 'Registrar Inscripción';
 
   constructor() {}
 

@@ -1,5 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-alta-curso',
@@ -23,11 +26,11 @@ export class AltaCursoComponent implements OnInit {
       Validators.pattern(/^\d+$/),
     ]),
   });
-  title: string = 'Formulario';
+  title: string = 'Registrar Curso';
 
-  constructor() {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit(): void {}
 
-  addAlumno(curso: any) {}
+  addCurso(curso: any) {}
 }
