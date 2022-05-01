@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppMaterialModule } from './modules/app.material.module';
 import { ContenidoComponent } from './modules/alumnos/components/contenido/contenido.component';
@@ -34,6 +35,7 @@ import { InscripcionesModule } from './modules/inscripciones/inscripciones.modul
   ],
   imports: [
     SharedModule,
+    HttpClientModule,
     AppMaterialModule,
     AppRoutingModule,
     CursosModule,

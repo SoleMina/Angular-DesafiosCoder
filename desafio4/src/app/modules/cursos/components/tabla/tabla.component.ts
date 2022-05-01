@@ -4,10 +4,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { AlumnoService } from 'src/app/core/services/alumno.service';
-import { PeriodicElement } from 'src/app/interfaces/PeriodicElement';
-import { Alumno } from 'src/app/models/alumno';
 import { AltaCursoComponent } from '../alta-curso/alta-curso.component';
 import Swal from 'sweetalert2';
+import { Curso } from 'src/app/interfaces/curso';
 
 @Component({
   selector: 'app-tabla',
@@ -15,31 +14,21 @@ import Swal from 'sweetalert2';
   styleUrls: ['./tabla.component.css'],
 })
 export class TablaComponent implements OnInit {
-  private alumnoSubscription!: Subscription;
-  alumnos: Alumno[] = [];
+  private cursoSubscription!: Subscription;
+  cursos: Curso[] = [];
   alumnoSelected: any;
+  cursoSelected: any;
   //alumnos: any[] = [];
   fecha: any = Date.now();
-  displayedColumns: string[] = [
-    'position',
-    'name',
-    'age',
-    'course',
-    'grade',
-    'email',
-    'symbol',
-  ];
-  dataSource = new MatTableDataSource<Alumno>(this.alumnos);
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatTable) tabla1!: MatTable<PeriodicElement>;
+  @ViewChild(MatTable) tabla1!: MatTable<Curso>;
 
   constructor(
     private alumnoService: AlumnoService,
     public dialogoRef: MatDialog
   ) {
-    this.alumnos = this.alumnoService.obtenerAlumnos();
-    this.alumnoService.alumnoSubject.next(this.alumnos);
+    this.cursos = this.alumnoService.obtenerCursos();
+    this.alumnoService.alumnoSubject.next(this.cursos);
     this.tabla1?.renderRows();
   }
 
@@ -51,33 +40,32 @@ export class TablaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.alumnoService.obtenerObservable().subscribe((alumnos) => {
-      this.alumnos = alumnos;
+    this.alumnoService.obtenerObservableCurso().subscribe((cursos) => {
+      this.cursos = cursos;
     });
 
-    this.alumnoService.alumnoSubject.subscribe((alumnos) => {
-      this.alumnos = alumnos;
+    this.alumnoService.alumnoSubject.subscribe((cursos) => {
+      this.cursos = cursos;
     });
-    this.alumnoSubscription = this.alumnoService
+    this.cursoSubscription = this.alumnoService
       .obtenerObservable()
       .subscribe((alumnos) => {
-        this.alumnos = this.alumnoService.obtenerAlumnos();
+        this.cursos = this.alumnoService.obtenerCursos();
       });
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.alumnos = this.alumnoService.obtenerAlumnos();
+    this.cursos = this.alumnoService.obtenerCursos();
   }
   ngOnDestroy(): void {
-    this.alumnoSubscription.unsubscribe();
+    this.cursoSubscription.unsubscribe();
   }
 
   userClicked(username: string) {
     this.tabla1?.renderRows();
     console.log('El usuario ' + username + ' fue clickeado');
   }
-  eliminarAlumno(position: number) {
+  eliminarCurso(position: number) {
     Swal.fire({
       title: '¿Estás seguro de que quieres eliminar este alumno?',
       showCancelButton: true,
@@ -91,16 +79,13 @@ export class TablaComponent implements OnInit {
       }
     });
   }
-  modificarAlumno(alumno: any) {
-    this.alumnoService.modificarAlumno(alumno);
+  muestraCurso(curso: any) {
     this.tabla1?.renderRows();
-  }
-  muestraAlumno(alumno: any) {
-    this.tabla1?.renderRows();
-    this.alumnoService.muestraAlumno(alumno);
+    this.alumnoService.muestraCurso(curso);
   }
 
-  seleccionarAlumno(alumno: Alumno) {
-    this.alumnoSelected = alumno;
+  seleccionarCurso(curso: Curso) {
+    this.cursoSelected = curso;
   }
+  
 }

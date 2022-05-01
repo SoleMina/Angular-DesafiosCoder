@@ -21,3 +21,6 @@ body {
 .mat-dialog-container {
   position: relative;
 }
+.mat-dialog-container .container__box {
+  top: 40px;
+}
