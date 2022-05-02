@@ -57,9 +57,6 @@ export class AlumnoService {
       .pipe(catchError(this.manejoError));
   }
 
-  obtenerObservableCurso(): Observable<Curso[]> {
-    return this.cursoObservable;
-  }
   obtenerCurso(): Observable<Curso[]> {
     return this.http
       .get<Curso[]>(`${this.API_URL}/cursos`, {

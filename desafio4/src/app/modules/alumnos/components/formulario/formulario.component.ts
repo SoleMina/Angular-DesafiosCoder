@@ -64,6 +64,6 @@ export class FormularioComponent implements OnInit, OnDestroy {
         */
       });
     //console.log(this.alumnos);
-    this.router.navigate(['inicio']);
+    this.router.navigate(['alumnos']);
   }
 }

@@ -28,8 +28,14 @@ export class TablaComponent implements OnInit {
     private alumnoService: AlumnoService,
     public dialogoRef: MatDialog,
     private router: Router
-  ) {
+  ) {}
+
+  ngOnInit(): void {
     this.alumnoService.obtenerCurso().subscribe((cursos) => {
+      this.cursos = cursos;
+    });
+
+    this.alumnoService.alumnoSubject.subscribe((cursos) => {
       this.cursos = cursos;
     });
   }
@@ -44,16 +50,6 @@ export class TablaComponent implements OnInit {
       .subscribe((result) => {
         this.router.navigate(['cursos']);
       });
-  }
-
-  ngOnInit(): void {
-    this.alumnoService.obtenerCurso().subscribe((cursos) => {
-      this.cursos = cursos;
-    });
-
-    this.alumnoService.alumnoSubject.subscribe((cursos) => {
-      this.cursos = cursos;
-    });
   }
 
   ngAfterViewInit() {

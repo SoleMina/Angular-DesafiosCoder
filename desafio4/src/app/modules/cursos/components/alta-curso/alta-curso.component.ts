@@ -35,12 +35,7 @@ export class AltaCursoComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private alumnoService: AlumnoService,
     private router: Router
-  ) {
-    this.alumnoService.obtenerCurso().subscribe((cursos) => {
-      this.cursos = cursos;
-    });
-    //this.cursos.alumnoSubject.next(this.cursos);
-  }
+  ) {}
 
   ngOnInit(): void {
     this.alumnoService.obtenerCurso().subscribe((cursos) => {
