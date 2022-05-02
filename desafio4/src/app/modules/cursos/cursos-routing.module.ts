@@ -5,7 +5,7 @@ import { AltaCursoComponent } from './components/alta-curso/alta-curso.component
 
 const routes: Routes = [
   {
-    path: 'cursos',
+    path: '',
     component: TablaComponent,
     children: [
       {

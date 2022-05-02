@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContenidoComponent } from './modules/alumnos/components/contenido/contenido.component';
 import { FormularioComponent } from './modules/alumnos/components/formulario/formulario.component';
-import { AltaCursoComponent } from './modules/cursos/components/alta-curso/alta-curso.component';
+import { TablaComponent } from './modules/cursos/components/tabla/tabla.component';
 
 const routes: Routes = [
   {
     path: 'alumnos',
     component: ContenidoComponent,
+    loadChildren: () =>
+      import('./modules/alumnos/alumnos.module').then((m) => m.AlumnosModule),
   },
   {
     path: '',
@@ -17,6 +19,12 @@ const routes: Routes = [
   {
     path: 'alumnos/nuevo-alumno',
     component: FormularioComponent,
+  },
+  {
+    path: 'cursos',
+    component: TablaComponent,
+    loadChildren: () =>
+      import('./modules/cursos/cursos.module').then((m) => m.CursosModule),
   },
 ];
 
