@@ -9,11 +9,12 @@ import {
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { PeriodicElement } from 'src/app/interfaces/PeriodicElement';
-import { Alumno } from 'src/app/models/alumno';
+import { Alumno } from 'src/app/interfaces/alumno';
 import { AlumnoService } from 'src/app/core/services/alumno.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EditTablaComponent } from '../edit-tabla/edit-tabla.component';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -33,51 +34,55 @@ export class TablaComponent implements OnInit, OnDestroy {
 
   constructor(
     private alumnoService: AlumnoService,
-    public dialogoRef: MatDialog
+    public dialogoRef: MatDialog,
+    private router: Router
   ) {
-    this.alumnoService.obtenerAlumno().subscribe((alumno: Alumno[]) => {
-      this.alumnos = alumno;
-    });
+    this.alumnoService.alumnoSubject.next(this.alumnos);
   }
 
-  ngOnInit(): void {
-    this.alumnoService.obtenerAlumno().subscribe((alumno: Alumno[]) => {
-      this.alumnos = alumno;
-    });
-  }
-
-  ngAfterViewInit() {}
-  ngOnDestroy(): void {
-    this.alumnoSubscription.unsubscribe();
-  }
+  ngOnInit(): void {}
 
   openDialog() {
-    this.dialogoRef.open(EditTablaComponent, {
-      width: '650px',
-      data: this.alumnoSelected,
+    this.dialogoRef
+      .open(EditTablaComponent, {
+        width: '650px',
+        data: this.alumnoSelected,
+      })
+      .afterClosed()
+      .subscribe((result) => {
+        this.router.navigate(['inicio']);
+      });
+  }
+
+  ngAfterViewInit() {
+    this.alumnoService.obtenerAlumno().subscribe((alumno: Alumno[]) => {
+      this.alumnos = alumno;
     });
+  }
+  ngOnDestroy(): void {
+    //this.alumnoSubscription.unsubscribe();
   }
 
   userClicked(username: string) {
     this.tabla1?.renderRows();
     console.log('El usuario ' + username + ' fue clickeado');
   }
-  eliminarAlumno(position: number) {
+  eliminarAlumno(position: string) {
     Swal.fire({
       title: '¿Estás seguro de que quieres eliminar este alumno?',
       showCancelButton: true,
       confirmButtonText: 'Delete',
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        this.alumnoService.eliminarAlumno(position);
         this.tabla1?.renderRows();
         Swal.fire('Eliminado!', '', 'success');
+        this.alumnoService.eliminarAlumno(position).subscribe((alumnos) => {
+          //this.alumnos = alumnos;
+        });
       }
     });
   }
   modificarAlumno(alumno: any) {
-    this.alumnoService.modificarAlumno(alumno);
     this.tabla1?.renderRows();
   }
   muestraAlumno(alumno: any) {

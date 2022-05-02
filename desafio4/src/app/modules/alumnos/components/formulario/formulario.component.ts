@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AlumnoService } from 'src/app/core/services/alumno.service';
 import { Subscription } from 'rxjs';
-import { Alumno } from 'src/app/models/alumno';
+import { Alumno } from 'src/app/interfaces/alumno';
 import { MatTable } from '@angular/material/table';
 import Swal from 'sweetalert2';
 
@@ -12,7 +13,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./formulario.component.css'],
 })
 export class FormularioComponent implements OnInit, OnDestroy {
-  alumnos: any[] = [];
+  alumnos: Alumno[] = [];
   formContacto: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     age: new FormControl('', [
@@ -32,43 +33,37 @@ export class FormularioComponent implements OnInit, OnDestroy {
 
   @ViewChild(MatTable) tabla1!: MatTable<Alumno>;
 
+  constructor(private alumnoService: AlumnoService, private router: Router) {}
+
   ngOnInit(): void {
-    this.alumnoService.obtenerObservable().subscribe((alumnos) => {
+    this.alumnoService.obtenerAlumno().subscribe((alumnos) => {
       this.alumnos = alumnos;
     });
-    this.alumnoService.alumnoSubject.subscribe((alumnos) => {
-      this.alumnos = alumnos;
-    });
-    this.alumnoSubscription = this.alumnoService
-      .obtenerObservable()
-      .subscribe((alumnos) => {
-        this.alumnos = this.alumnoService.obtenerAlumnos();
-      });
   }
 
-  ngAfterViewInit() {
-    this.alumnos = this.alumnoService.obtenerAlumnos();
-  }
+  ngAfterViewInit() {}
 
   ngOnDestroy(): void {
-    this.alumnoSubscription.unsubscribe();
+    //this.alumnoSubscription.unsubscribe();
   }
 
-  constructor(private alumnoService: AlumnoService) {
-    this.alumnos = this.alumnoService.obtenerAlumnos();
-    this.alumnoService.alumnoSubject.next(this.alumnos);
-  }
-
-  addAlumno(alumno: any) {
-    this.alumnoService.addAlumno(this.formContacto.value);
-    this.tabla1?.renderRows();
-    console.log('thissss here', this.alumnos);
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Alumno registrado',
-      showConfirmButton: false,
-      timer: 1500,
-    });
+  addAlumno() {
+    this.alumnoService
+      .agregarAlumno(this.formContacto.value)
+      .subscribe((data) => {
+        console.log('FUAAA', data);
+        console.log('OH', this.alumnos);
+        /*
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Alumno registrado',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        */
+      });
+    //console.log(this.alumnos);
+    this.router.navigate(['inicio']);
   }
 }

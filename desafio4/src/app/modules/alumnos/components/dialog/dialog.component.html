@@ -1,4 +1,9 @@
 <h2>Registrar Nuevo estudiante</h2>
-<button mat-raised-button color="accent" (click)="openDialog()">
+<button
+  mat-raised-button
+  color="accent"
+  [routerLink]="'alumno/nuevo-alumno'"
+  (click)="openDialog()"
+>
   Agregar Estudiante
 </button>

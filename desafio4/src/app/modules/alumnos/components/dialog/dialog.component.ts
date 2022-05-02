@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { ContenidoDialogComponent } from '../contenido-dialog/contenido-dialog.component';
 
 @Component({
@@ -8,7 +9,7 @@ import { ContenidoDialogComponent } from '../contenido-dialog/contenido-dialog.c
   styleUrls: ['./dialog.component.css'],
 })
 export class DialogComponent implements OnInit {
-  constructor(public dialogoRef: MatDialog) {}
+  constructor(public dialogoRef: MatDialog, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -21,6 +22,8 @@ export class DialogComponent implements OnInit {
         course: 'Angular',
         rol: 'Programmer',
       },
-    });
+    }).afterClosed().subscribe((result) => {
+      this.router.navigate(['inicio']);
+    })
   }
 }

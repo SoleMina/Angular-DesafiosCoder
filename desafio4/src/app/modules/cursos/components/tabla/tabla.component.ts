@@ -47,11 +47,11 @@ export class TablaComponent implements OnInit {
     this.alumnoService.alumnoSubject.subscribe((cursos) => {
       this.cursos = cursos;
     });
-    this.cursoSubscription = this.alumnoService
-      .obtenerObservable()
-      .subscribe((alumnos) => {
-        this.cursos = this.alumnoService.obtenerCursos();
-      });
+    //this.cursoSubscription = this.alumnoService
+    //.obtenerObservable()
+    //.subscribe((alumnos) => {
+    //this.cursos = this.alumnoService.obtenerCursos();
+    //});
   }
 
   ngAfterViewInit() {
@@ -65,13 +65,14 @@ export class TablaComponent implements OnInit {
     this.tabla1?.renderRows();
     console.log('El usuario ' + username + ' fue clickeado');
   }
+  /*
   eliminarCurso(position: number) {
     Swal.fire({
       title: '¿Estás seguro de que quieres eliminar este alumno?',
       showCancelButton: true,
       confirmButtonText: 'Delete',
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
+       Read more about isConfirmed, isDenied below 
       if (result.isConfirmed) {
         this.alumnoService.eliminarAlumno(position);
         this.tabla1?.renderRows();
@@ -79,6 +80,7 @@ export class TablaComponent implements OnInit {
       }
     });
   }
+  */
   muestraCurso(curso: any) {
     this.tabla1?.renderRows();
     this.alumnoService.muestraCurso(curso);
@@ -87,5 +89,4 @@ export class TablaComponent implements OnInit {
   seleccionarCurso(curso: Curso) {
     this.cursoSelected = curso;
   }
-  
 }

@@ -11,6 +11,6 @@ export class AppComponent {
   title = 'desafio4';
 
   constructor(private alumnoService: AlumnoService) {
-    this.alumnos = this.alumnoService.obtenerAlumnos();
+    //this.alumnos = this.alumnoService.obtenerAlumnos();
   }
 }

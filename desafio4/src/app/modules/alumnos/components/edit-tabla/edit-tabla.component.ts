@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewChild, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlumnoService } from 'src/app/core/services/alumno.service';
 import { Subscription } from 'rxjs';
-import { Alumno } from 'src/app/models/alumno';
+import { Alumno } from 'src/app/interfaces/alumno';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 
@@ -12,7 +12,7 @@ import { MatTable } from '@angular/material/table';
   styleUrls: ['./edit-tabla.component.css'],
 })
 export class EditTablaComponent implements OnInit, OnDestroy {
-  alumnos: any[] = [];
+  alumnos: Alumno[] = [];
   formModificar: FormGroup = new FormGroup({
     position: new FormControl('', [
       Validators.required,
@@ -40,8 +40,10 @@ export class EditTablaComponent implements OnInit, OnDestroy {
     private alumnoService: AlumnoService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this.alumnos = this.alumnoService.obtenerAlumnos();
-    this.alumnoService.alumnoSubject.next(this.alumnos);
+    this.alumnoService.obtenerAlumno().subscribe((alumno: Alumno[]) => {
+      this.alumnos = alumno;
+    });
+    //this.alumnoService.alumnoSubject.next(this.alumnos);
 
     this.formModificar.setValue({
       position: this.data.position,
@@ -54,32 +56,39 @@ export class EditTablaComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.alumnoService.obtenerObservable().subscribe((alumnos) => {
-      this.alumnos = alumnos;
+    this.alumnoService.obtenerAlumno().subscribe((alumno: Alumno[]) => {
+      this.alumnos = alumno;
     });
-    this.alumnoService.alumnoSubject.subscribe((alumnos) => {
-      this.alumnos = alumnos;
-    });
-    this.alumnoSubscription = this.alumnoService
-      .obtenerObservable()
-      .subscribe((alumnos) => {
-        this.alumnos = this.alumnoService.obtenerAlumnos();
-      });
-    this.updateAlumno();
+    //this.alumnoService.alumnoSubject.subscribe((alumnos) => {
+    //this.alumnos = alumnos;
+    //});
+    //this.alumnoSubscription = this.alumnoService
+    //.obtenerObservable()
+    //.subscribe((alumnos) => {
+    //this.alumnos = this.alumnoService.obtenerAlumnos();
+    //});
+    //this.updateAlumno();
   }
 
   ngAfterViewInit() {
-    this.alumnos = this.alumnoService.obtenerAlumnos();
+    this.alumnoService.obtenerAlumno().subscribe((alumno: Alumno[]) => {
+      this.alumnos = alumno;
+    });
   }
 
   ngOnDestroy(): void {
-    this.alumnoSubscription.unsubscribe();
+    //this.alumnoSubscription.unsubscribe();
   }
 
   updateAlumno() {
-    let alumno = this.formModificar.value;
-    this.alumnoService.updateAlumno(alumno);
-
-    return this.alumnos;
+    let alumno: Alumno = {
+      position: this.data.position,
+      name: this.formModificar.value.name,
+      age: this.formModificar.value.age,
+      course: this.formModificar.value.course,
+      grade: this.formModificar.value.grade,
+      email: this.formModificar.value.email,
+    };
+    this.alumnoService.updateAlumno(alumno).subscribe(console.log);
   }
 }

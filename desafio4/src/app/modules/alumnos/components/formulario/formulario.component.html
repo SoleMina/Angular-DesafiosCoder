@@ -2,10 +2,7 @@
   <h1 class="text-center font-weight-bold" [appResaltado]="'#E8FF3C'">
     {{ title }}
   </h1>
-  <form
-    [formGroup]="formContacto"
-    (ngSubmit)="addAlumno(this.formContacto.value)"
-  >
+  <form [formGroup]="formContacto" (ngSubmit)="addAlumno()">
     <!-- Name Group-->
     <div class="form-group">
       <label class="form-label">Name:</label>

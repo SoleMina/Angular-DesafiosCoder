@@ -1,5 +1,5 @@
 export interface Alumno {
-  position: number;
+  position: string;
   name: string;
   age: number;
   course: string;
