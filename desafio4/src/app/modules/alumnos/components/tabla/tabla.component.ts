@@ -40,7 +40,11 @@ export class TablaComponent implements OnInit, OnDestroy {
     this.alumnoService.alumnoSubject.next(this.alumnos);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.alumnoService.obtenerAlumno().subscribe((alumnos) => {
+      this.alumnos = alumnos;
+    });
+  }
 
   openDialog() {
     this.dialogoRef
@@ -81,9 +85,6 @@ export class TablaComponent implements OnInit, OnDestroy {
         });
       }
     });
-  }
-  modificarAlumno(alumno: any) {
-    this.tabla1?.renderRows();
   }
   muestraAlumno(alumno: any) {
     this.tabla1?.renderRows();

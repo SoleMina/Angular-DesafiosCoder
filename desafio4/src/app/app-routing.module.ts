@@ -6,16 +6,16 @@ import { AltaCursoComponent } from './modules/cursos/components/alta-curso/alta-
 
 const routes: Routes = [
   {
-    path: 'inicio',
+    path: 'alumnos',
     component: ContenidoComponent,
   },
   {
     path: '',
-    redirectTo: 'inicio',
+    redirectTo: 'alumnos',
     pathMatch: 'full',
   },
   {
-    path: 'inicio/alumno/nuevo-alumno',
+    path: 'alumnos/nuevo-alumno',
     component: FormularioComponent,
   },
 ];

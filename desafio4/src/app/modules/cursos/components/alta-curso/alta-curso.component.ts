@@ -2,8 +2,10 @@ import { Component, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AlumnoService } from 'src/app/core/services/alumno.service';
+import { Router } from '@angular/router';
 
 import Swal from 'sweetalert2';
+import { Curso } from 'src/app/interfaces/curso';
 
 @Component({
   selector: 'app-alta-curso',
@@ -11,7 +13,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./alta-curso.component.css'],
 })
 export class AltaCursoComponent implements OnInit {
-  cursos: any[] = [];
+  cursos: Curso[] = [];
   formCurso: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     description: new FormControl('', [
@@ -31,23 +33,36 @@ export class AltaCursoComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private alumnoService: AlumnoService
+    private alumnoService: AlumnoService,
+    private router: Router
   ) {
-    this.cursos = this.alumnoService.obtenerCursos();
+    this.alumnoService.obtenerCurso().subscribe((cursos) => {
+      this.cursos = cursos;
+    });
     //this.cursos.alumnoSubject.next(this.cursos);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.alumnoService.obtenerCurso().subscribe((cursos) => {
+      this.cursos = cursos;
+    });
+  }
 
   addCurso(curso: any) {
-    this.alumnoService.addCurso(this.formCurso.value);
-    console.log('thissss here', this.cursos);
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Alumno registrado',
-      showConfirmButton: false,
-      timer: 1500,
+    this.alumnoService.addCurso(this.formCurso.value).subscribe((data) => {
+      console.log('FUAAA', data);
+      console.log('OH', this.cursos);
+      /*
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Alumno registrado',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        */
     });
+    //console.log(this.alumnos);
+    this.router.navigate(['cursos']);
   }
 }

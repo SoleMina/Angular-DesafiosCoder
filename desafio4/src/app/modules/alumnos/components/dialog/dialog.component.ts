@@ -14,16 +14,19 @@ export class DialogComponent implements OnInit {
   ngOnInit(): void {}
 
   openDialog() {
-    this.dialogoRef.open(ContenidoDialogComponent, {
-      width: '650px',
-      data: {
-        name: 'Karina',
-        lastname: 'Prado',
-        course: 'Angular',
-        rol: 'Programmer',
-      },
-    }).afterClosed().subscribe((result) => {
-      this.router.navigate(['inicio']);
-    })
+    this.dialogoRef
+      .open(ContenidoDialogComponent, {
+        width: '650px',
+        data: {
+          name: 'Karina',
+          lastname: 'Prado',
+          course: 'Angular',
+          rol: 'Programmer',
+        },
+      })
+      .afterClosed()
+      .subscribe((result) => {
+        this.router.navigate(['alumnos']);
+      });
   }
 }

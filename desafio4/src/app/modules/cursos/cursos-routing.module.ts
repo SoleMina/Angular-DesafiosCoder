@@ -8,6 +8,10 @@ const routes: Routes = [
     path: 'cursos',
     component: TablaComponent,
   },
+  {
+    path: 'cursos/nuevo-curso',
+    component: AltaCursoComponent,
+  },
 ];
 
 @NgModule({

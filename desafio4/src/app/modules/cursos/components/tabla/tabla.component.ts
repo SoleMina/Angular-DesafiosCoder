@@ -7,6 +7,7 @@ import { AlumnoService } from 'src/app/core/services/alumno.service';
 import { AltaCursoComponent } from '../alta-curso/alta-curso.component';
 import Swal from 'sweetalert2';
 import { Curso } from 'src/app/interfaces/curso';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabla',
@@ -25,37 +26,40 @@ export class TablaComponent implements OnInit {
 
   constructor(
     private alumnoService: AlumnoService,
-    public dialogoRef: MatDialog
+    public dialogoRef: MatDialog,
+    private router: Router
   ) {
-    this.cursos = this.alumnoService.obtenerCursos();
-    this.alumnoService.alumnoSubject.next(this.cursos);
-    this.tabla1?.renderRows();
-  }
-
-  openDialog() {
-    this.dialogoRef.open(AltaCursoComponent, {
-      width: '630px',
-      height: '560px',
+    this.alumnoService.obtenerCurso().subscribe((cursos) => {
+      this.cursos = cursos;
     });
   }
 
+  openDialog() {
+    this.dialogoRef
+      .open(AltaCursoComponent, {
+        width: '630px',
+        height: '560px',
+      })
+      .afterClosed()
+      .subscribe((result) => {
+        this.router.navigate(['cursos']);
+      });
+  }
+
   ngOnInit(): void {
-    this.alumnoService.obtenerObservableCurso().subscribe((cursos) => {
+    this.alumnoService.obtenerCurso().subscribe((cursos) => {
       this.cursos = cursos;
     });
 
     this.alumnoService.alumnoSubject.subscribe((cursos) => {
       this.cursos = cursos;
     });
-    //this.cursoSubscription = this.alumnoService
-    //.obtenerObservable()
-    //.subscribe((alumnos) => {
-    //this.cursos = this.alumnoService.obtenerCursos();
-    //});
   }
 
   ngAfterViewInit() {
-    this.cursos = this.alumnoService.obtenerCursos();
+    this.alumnoService.obtenerCurso().subscribe((cursos) => {
+      this.cursos = cursos;
+    });
   }
   ngOnDestroy(): void {
     this.cursoSubscription.unsubscribe();
@@ -82,11 +86,23 @@ export class TablaComponent implements OnInit {
   }
   */
   muestraCurso(curso: any) {
-    this.tabla1?.renderRows();
     this.alumnoService.muestraCurso(curso);
   }
 
   seleccionarCurso(curso: Curso) {
     this.cursoSelected = curso;
+  }
+  eliminarCurso(id: number) {
+    Swal.fire({
+      title: '¿Estás seguro de que quieres eliminar este alumno?',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.tabla1?.renderRows();
+        Swal.fire('Eliminado!', '', 'success');
+        this.alumnoService.eliminarCurso(id).subscribe((cursos) => {});
+      }
+    });
   }
 }
