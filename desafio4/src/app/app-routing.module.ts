@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContenidoComponent } from './modules/alumnos/components/contenido/contenido.component';
+import { EditTablaComponent } from './modules/alumnos/components/edit-tabla/edit-tabla.component';
 import { FormularioComponent } from './modules/alumnos/components/formulario/formulario.component';
 import { TablaComponent } from './modules/cursos/components/tabla/tabla.component';
 
@@ -8,8 +9,6 @@ const routes: Routes = [
   {
     path: 'alumnos',
     component: ContenidoComponent,
-    loadChildren: () =>
-      import('./modules/alumnos/alumnos.module').then((m) => m.AlumnosModule),
   },
   {
     path: '',

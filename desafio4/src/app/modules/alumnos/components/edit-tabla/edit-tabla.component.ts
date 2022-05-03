@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { Alumno } from 'src/app/interfaces/alumno';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-tabla',
@@ -38,6 +39,7 @@ export class EditTablaComponent implements OnInit, OnDestroy {
 
   constructor(
     private alumnoService: AlumnoService,
+    private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.alumnoService.obtenerAlumno().subscribe((alumno: Alumno[]) => {

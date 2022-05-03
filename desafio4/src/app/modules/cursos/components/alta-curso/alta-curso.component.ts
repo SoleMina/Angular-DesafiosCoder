@@ -30,6 +30,7 @@ export class AltaCursoComponent implements OnInit {
     ]),
   });
   title: string = 'Registrar Curso';
+  loading = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -41,9 +42,19 @@ export class AltaCursoComponent implements OnInit {
     this.alumnoService.obtenerCurso().subscribe((cursos) => {
       this.cursos = cursos;
     });
+
+    if (this.data) {
+      this.formCurso.setValue({
+        name: this.data.name,
+        description: this.data.description,
+        category: this.data.category,
+        capacity: this.data.capacity,
+      });
+    }
   }
 
   addCurso(curso: any) {
+    this.formCurso.reset();
     this.alumnoService.addCurso(this.formCurso.value).subscribe((data) => {
       console.log('FUAAA', data);
       console.log('OH', this.cursos);
@@ -59,5 +70,18 @@ export class AltaCursoComponent implements OnInit {
     });
     //console.log(this.alumnos);
     this.router.navigate(['cursos']);
+  }
+  updateCurso() {
+    let curso: Curso = {
+      id: this.data.id,
+      name: this.formCurso.value.name,
+      description: this.formCurso.value.description,
+      category: this.formCurso.value.category,
+      capacity: this.formCurso.value.capacity,
+    };
+    this.alumnoService.updateCurso(curso).subscribe(console.log);
+  }
+  resetForm() {
+    this.formCurso.reset();
   }
 }

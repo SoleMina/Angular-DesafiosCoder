@@ -54,7 +54,7 @@ export class TablaComponent implements OnInit, OnDestroy {
       })
       .afterClosed()
       .subscribe((result) => {
-        this.router.navigate(['inicio']);
+        this.router.navigate(['alumnos']);
       });
   }
 

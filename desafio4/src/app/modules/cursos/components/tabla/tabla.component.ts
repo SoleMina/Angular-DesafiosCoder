@@ -45,6 +45,7 @@ export class TablaComponent implements OnInit {
       .open(AltaCursoComponent, {
         width: '630px',
         height: '560px',
+        data: this.cursoSelected,
       })
       .afterClosed()
       .subscribe((result) => {
@@ -58,7 +59,7 @@ export class TablaComponent implements OnInit {
     });
   }
   ngOnDestroy(): void {
-    this.cursoSubscription.unsubscribe();
+    //this.cursoSubscription.unsubscribe();
   }
 
   userClicked(username: string) {
