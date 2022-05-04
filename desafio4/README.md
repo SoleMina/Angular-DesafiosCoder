@@ -14,8 +14,6 @@ This project is built with angular material, flex-layout, tables, content-dialog
 
 Usar este usuario para loguearse:
 {
-"name": "Winfield",
-"apellido": "Rowe",
 "correo": "Eleanora_Trantow93@yahoo.com",
 "contrasena": "0RyPEWbvLSdl2mY",
 "id": "1"

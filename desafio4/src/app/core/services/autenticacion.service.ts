@@ -4,6 +4,7 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { Injectable, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { environment } from '../../../environments/environment';
@@ -16,7 +17,7 @@ export class AutenticacionService {
     activo: false,
     usuario: {},
   };
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(correo: string, contrasena: string): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(`${environment.apiURL}/users`).pipe(
@@ -33,5 +34,14 @@ export class AutenticacionService {
       usuario: usuario,
     };
     localStorage.setItem('sesion', JSON.stringify(this.sesion));
+    this.router.navigate(['alumnos']);
+  }
+
+  logout() {
+    this.sesion = {
+      activa: false,
+      usuario: {},
+    };
+    localStorage.removeItem('sesion');
   }
 }
