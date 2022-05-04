@@ -9,14 +9,14 @@ import { AutenticacionService } from './core/services/autenticacion.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  sesionActiva!: boolean;
+  sesionActiva!: any;
 
   constructor(
     private alumnoService: AlumnoService,
     private auth: AutenticacionService,
     private router: Router
   ) {
-    this.sesionActiva = localStorage.getItem('sesion') ? true : false;
+    this.sesionActiva = JSON.parse(localStorage.getItem('sesion') || '{}');
   }
 
   logout() {

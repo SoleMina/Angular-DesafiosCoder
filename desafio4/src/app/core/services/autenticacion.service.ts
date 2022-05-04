@@ -14,7 +14,7 @@ import { environment } from '../../../environments/environment';
 })
 export class AutenticacionService {
   sesion: any = {
-    activo: false,
+    activa: false,
     usuario: {},
   };
   constructor(private http: HttpClient, private router: Router) {}

@@ -6,6 +6,7 @@ import { AutenticacionRoutingModule } from './autenticacion-routing.module';
 import { AutenticacionService } from '../core/services/autenticacion.service';
 import { SharedModule } from '../shared/shared.module';
 import { AppMaterialModule } from '../modules/app.material.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -16,6 +17,7 @@ import { AppMaterialModule } from '../modules/app.material.module';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
   ],
   providers: [],
 })
