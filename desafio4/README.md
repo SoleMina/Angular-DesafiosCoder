@@ -13,7 +13,5 @@ This project is built with angular material, flex-layout, tables, content-dialog
 ## User Login
 
 Usar este usuario para loguearse:
-{
 "correo": "Eleanora_Trantow93@yahoo.com",
 "contrasena": "0RyPEWbvLSdl2mY"
-},
