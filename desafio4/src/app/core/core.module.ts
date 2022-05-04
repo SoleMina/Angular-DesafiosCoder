@@ -4,10 +4,16 @@ import { CursosModule } from '../modules/cursos/cursos.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { ContenidoComponent } from '../modules/alumnos/components/contenido/contenido.component';
 import { InscripcionesModule } from '../modules/inscripciones/inscripciones.module';
+import { AutenticacionModule } from '../autenticacion/autenticacion.module';
 
 @NgModule({
   declarations: [ContenidoComponent],
   imports: [CommonModule, AppRoutingModule],
-  exports: [AppRoutingModule, CursosModule, InscripcionesModule],
+  exports: [
+    AppRoutingModule,
+    CursosModule,
+    InscripcionesModule,
+    AutenticacionModule,
+  ],
 })
 export class CoreModule {}

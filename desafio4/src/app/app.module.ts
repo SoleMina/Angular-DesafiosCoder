@@ -20,6 +20,7 @@ import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { CursosModule } from './modules/cursos/cursos.module';
 import { InscripcionesModule } from './modules/inscripciones/inscripciones.module';
+import { AutenticacionModule } from './autenticacion/autenticacion.module';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { InscripcionesModule } from './modules/inscripciones/inscripciones.modul
     AppMaterialModule,
     AppRoutingModule,
     CursosModule,
+    AutenticacionModule,
     InscripcionesModule,
     BrowserModule,
     CoreModule,

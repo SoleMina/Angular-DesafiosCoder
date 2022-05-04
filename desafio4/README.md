@@ -9,3 +9,14 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 ## Project
 
 This project is built with angular material, flex-layout, tables, content-dialog, dialog, pipes, directives, services, etc
+
+## User Login
+
+Usar este usuario para loguearse:
+{
+"name": "Winfield",
+"apellido": "Rowe",
+"correo": "Eleanora_Trantow93@yahoo.com",
+"contrasena": "0RyPEWbvLSdl2mY",
+"id": "1"
+},

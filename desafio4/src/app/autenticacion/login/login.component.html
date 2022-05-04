@@ -1,0 +1,11 @@
+<div class="container pt-2 container__box">
+  <form [formGroup]="formularioLogin" (ngSubmit)="login()">
+    <input type="text" placeholder="correo" formControlName="correo" />
+    <input
+      type="password"
+      placeholder="contrasena"
+      formControlName="contrasena"
+    />
+    <button type="submit">Login</button>
+  </form>
+</div>
